@@ -1,0 +1,19 @@
+# History files
+.Rhistory
+.Rapp.history
+
+# RStudio project files
+.Rproj.user/
+.Rproj.user/*
+
+# RData
+.RData
+
+# Deployment files
+rsconnect/
+
+# Raw data files
+data-raw/
+
+
+data/original/*

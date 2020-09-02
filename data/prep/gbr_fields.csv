@@ -1,0 +1,10 @@
+GBR_id,ocds_fields
+buyer_name,buyer/name
+tender_year,contracts/dateSigned
+tender_id,tender/id
+tender_estimatedPrice,contracts/value/amount
+tender_estimatedPrice,contracts/value/amount
+lot_status,contracts/status
+tender_title,tender/title
+buyer_id,buyer/id
+tender_supplyType,tender/mainProcurementCategory

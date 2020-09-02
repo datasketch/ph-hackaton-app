@@ -1,0 +1,97 @@
+question_id,questions,sql_query,db,questions_en,questions_es,questions_pt
+q1.0,What are the entities that signed the most contracts?,"SELECT `buyer/name`, `n`
+FROM (SELECT `buyer/name`, `n`, ROW_NUMBER() OVER (ORDER BY `n` DESC) AS `...row_id`
+FROM (SELECT *
+FROM (SELECT `buyer/name`, COUNT() AS `n`
+FROM (SELECT `buyer/name`
+FROM `col`)
+GROUP BY `buyer/name`)
+ORDER BY `n` DESC))
+WHERE (`...row_id` IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20))",col,What are the entities that signed the most contracts?,¿Cuáles son las entidades que más contratos firman?,Quais são as entidades que assinaram mais contratos?
+q1.1,What are the entities that signed the most contracts by contract status?,"SELECT `buyer/name`, `contracts/status`, `n`
+FROM (SELECT `buyer/name`, `contracts/status`, `n`, ROW_NUMBER() OVER (ORDER BY `n` DESC) AS `...row_id`
+FROM (SELECT *
+FROM (SELECT `buyer/name`, `contracts/status`, COUNT() AS `n`
+FROM (SELECT `buyer/name`, `contracts/status`
+FROM `col`)
+GROUP BY `buyer/name`, `contracts/status`)
+ORDER BY `n` DESC))
+WHERE (`...row_id` IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20))",col,What are the entities that signed the most contracts by contract status?,¿Cuáles son las entidades que más contratos firman por estado del proceso?,Quais são as entidades que assinaram contratos para mais estado do processo?
+q1.2,What are the entities that signed the most contracts per year?,"SELECT `buyer/name`, `contracts/dateSigned`, `n`
+FROM (SELECT `buyer/name`, `contracts/dateSigned`, `n`, ROW_NUMBER() OVER (ORDER BY `n` DESC) AS `...row_id`
+FROM (SELECT *
+FROM (SELECT `buyer/name`, `contracts/dateSigned`, COUNT() AS `n`
+FROM (SELECT `buyer/name`, `contracts/dateSigned`
+FROM `col`)
+GROUP BY `buyer/name`, `contracts/dateSigned`)
+ORDER BY `n` DESC))
+WHERE (`...row_id` IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20))",col,What are the entities that signed the most contracts per year?,¿Cuáles son las entidades que más contratos firman por año?,Quais são as entidades que assinaram mais contratos por ano?
+q1.3,What are the entities that signed the most contracts by contract type?,"SELECT `buyer/name`, `tender/mainProcurementCategory`, `n`
+FROM (SELECT `buyer/name`, `tender/mainProcurementCategory`, `n`, ROW_NUMBER() OVER (ORDER BY `n` DESC) AS `...row_id`
+FROM (SELECT *
+FROM (SELECT `buyer/name`, `tender/mainProcurementCategory`, COUNT() AS `n`
+FROM (SELECT `buyer/name`, `tender/mainProcurementCategory`
+FROM `col`)
+GROUP BY `buyer/name`, `tender/mainProcurementCategory`)
+ORDER BY `n` DESC))
+WHERE (`...row_id` IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20))",col,What are the entities that signed the most contracts by contract type?,¿Cuáles son las entidades que más contratos firman por tipo de contrato?,Quais são as entidades que assinaram mais contratos por tipo de contrato?
+q2.0,What are the entities that signed the most expensive contracts?,"SELECT `buyer/name`, `sum`
+FROM (SELECT `buyer/name`, `sum`, ROW_NUMBER() OVER (ORDER BY `sum` DESC) AS `...row_id`
+FROM (SELECT *
+FROM (SELECT `buyer/name`, SUM(`contracts/value/amount`) AS `sum`
+FROM (SELECT `buyer/name`, `contracts/value/amount`
+FROM `col`)
+GROUP BY `buyer/name`)
+ORDER BY `sum` DESC))
+WHERE (`...row_id` IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20))",col,What are the entities that signed the most expensive contracts?,¿Cuáles son las entidades que firman contratos de mayores costos?,Quais são as entidades que os contratos assinados aumento dos custos?
+q2.1,What are the entities that signed the most expensive contracts per year?,"SELECT `buyer/name`, `contracts/dateSigned`, `sum`
+FROM (SELECT `buyer/name`, `contracts/dateSigned`, `sum`, ROW_NUMBER() OVER (ORDER BY `sum` DESC) AS `...row_id`
+FROM (SELECT *
+FROM (SELECT `buyer/name`, `contracts/dateSigned`, SUM(`contracts/value/amount`) AS `sum`
+FROM (SELECT `buyer/name`, `contracts/dateSigned`, `contracts/value/amount`
+FROM `col`)
+GROUP BY `buyer/name`, `contracts/dateSigned`)
+ORDER BY `sum` DESC))
+WHERE (`...row_id` IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20))",col,What are the entities that signed the most expensive contracts per year?,¿Cuáles son las entidades que firman contratos de mayores costos por año?,Quais são as entidades que os custos de contratos assinados mais elevados por ano?
+q2.2,What are the entities that signed the most expensive contracts by contract type?,"SELECT `buyer/name`, `tender/mainProcurementCategory`, `sum`
+FROM (SELECT `buyer/name`, `tender/mainProcurementCategory`, `sum`, ROW_NUMBER() OVER (ORDER BY `sum` DESC) AS `...row_id`
+FROM (SELECT *
+FROM (SELECT `buyer/name`, `tender/mainProcurementCategory`, SUM(`contracts/value/amount`) AS `sum`
+FROM (SELECT `buyer/name`, `tender/mainProcurementCategory`, `contracts/value/amount`
+FROM `col`)
+GROUP BY `buyer/name`, `tender/mainProcurementCategory`)
+ORDER BY `sum` DESC))
+WHERE (`...row_id` IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20))",col,What are the entities that signed the most expensive contracts by contract type?,¿Cuáles son las entidades que firman contratos de mayores costos por tipo de contrato?,Quais são as entidades que os contratos assinados aumento dos custos por tipo de contrato?
+q4.0,What are the entities that cancelled the most contracts?,"SELECT `buyer/name`, `n`
+FROM (SELECT `buyer/name`, `n`, ROW_NUMBER() OVER (ORDER BY `n` DESC) AS `...row_id`
+FROM (SELECT *
+FROM (SELECT `buyer/name`, COUNT() AS `n`
+FROM (SELECT `buyer/name`
+FROM (SELECT *
+FROM `col`
+WHERE (`contracts/status` = 'Liquidado')))
+GROUP BY `buyer/name`)
+ORDER BY `n` DESC))
+WHERE (`...row_id` IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20))",col,What are the entities that cancelled the most contracts?,"¿Cuáles son las entidades que más liquidan, terminan y convocan contratos sin celebrarlos?","Quais são as entidades mais assentadas, e contratos de chamada terminar sem comemorar?"
+q4.1,What are the entities that cancelled the most contracts per year?,"SELECT `buyer/name`, `contracts/dateSigned`, `n`
+FROM (SELECT `buyer/name`, `contracts/dateSigned`, `n`, ROW_NUMBER() OVER (ORDER BY `n` DESC) AS `...row_id`
+FROM (SELECT *
+FROM (SELECT `buyer/name`, `contracts/dateSigned`, COUNT() AS `n`
+FROM (SELECT `buyer/name`, `contracts/dateSigned`
+FROM (SELECT *
+FROM `col`
+WHERE (`contracts/status` = 'Liquidado')))
+GROUP BY `buyer/name`, `contracts/dateSigned`)
+ORDER BY `n` DESC))
+WHERE (`...row_id` IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20))",col,What are the entities that cancelled the most contracts per year?,"¿Cuáles son las entidades que más liquidan, terminan y convocan contratos sin celebrarlos por año?","Quais são as entidades mais assentadas, e contratos de chamada terminar sem celebrar cada ano?"
+q4.2,What are the entities that cancelled the most contracts by contract type?,"SELECT `buyer/name`, `tender/mainProcurementCategory`, `n`
+FROM (SELECT `buyer/name`, `tender/mainProcurementCategory`, `n`, ROW_NUMBER() OVER (ORDER BY `n` DESC) AS `...row_id`
+FROM (SELECT *
+FROM (SELECT `buyer/name`, `tender/mainProcurementCategory`, COUNT() AS `n`
+FROM (SELECT `buyer/name`, `tender/mainProcurementCategory`
+FROM (SELECT *
+FROM `col`
+WHERE (`contracts/status` = 'Liquidado')))
+GROUP BY `buyer/name`, `tender/mainProcurementCategory`)
+ORDER BY `n` DESC))
+WHERE (`...row_id` IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20))",col,What are the entities that cancelled the most contracts by contract type?,"¿Cuáles son las entidades que más liquidan, terminan y convocan contratos sin celebrarlos por tipo de contrato?","Quais são as entidades mais assentadas, e contratos de chamada terminar sem celebrar por tipo de contrato?"
